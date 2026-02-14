@@ -56,7 +56,8 @@ A distributed property-listing backend that simulates **two geographic regions**
 
 - [Docker](https://docs.docker.com/get-docker/) & Docker Compose v2
 - `curl` (for manual testing)
-- `bash` (for the failover demo script)
+- `bash` (for the bash failover demo script)
+- PowerShell (for the Windows failover demo script)
 - Node.js ≥ 18 (only if running tests outside Docker)
 
 ---
@@ -203,6 +204,10 @@ The test suite covers:
 bash tests/demonstrate_failover.sh
 ```
 
+```powershell
+powershell -ExecutionPolicy Bypass -File tests/demonstrate_failover.ps1
+```
+
 This script:
 1. Starts all services
 2. Sends a request to `/us/health` → served by `backend-us`
@@ -250,7 +255,8 @@ multi-region-property-backend/
 │   └── init.sql                # Schema + 1200-row seed data
 ├── tests/
 │   ├── integration.test.js     # Automated integration tests
-│   └── demonstrate_failover.sh # Failover demo script
+│   ├── demonstrate_failover.sh # Failover demo script (bash)
+│   └── demonstrate_failover.ps1 # Failover demo script (PowerShell)
 └── README.md
 ```
 
